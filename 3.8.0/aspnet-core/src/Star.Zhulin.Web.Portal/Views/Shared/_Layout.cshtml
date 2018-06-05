@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>朱琳影迷会__http://www.zhulin.net/</title>
+    <!--css-->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome-ie7.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <!--js-->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/core/knockout-3.4.2.js"></script>
+    <script src="~/js/vue.js"></script>
+
+    <!--style-->
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            min-width: 815px;
+            background-color: #fff !important;
+        }
+
+        .top-header {
+            width: 80%;
+        }
+
+        .case {
+            margin-top: 10px;
+            width: 80%;
+            margin-left: auto;
+            height: calc(100% - 210px);
+            height: -moz-calc(100% - 210px);
+            height: -webkit-calc(100% - 210px);
+            margin-right: auto;
+        }
+
+        .panel-body {
+            padding: 25px;
+        }
+
+        .top-navigation .nav > li > a {
+            padding: 10px 5px;
+            color: #676a6c;
+            text-align: center;
+        }
+
+        .navbar {
+            min-height: 40px !important;
+        }
+
+        .row {
+            margin-right: 0px;
+            margin-left: 0px;
+            width: 100%;
+        }
+
+        .col-md-1-7 {
+            width: 14.286%;
+            float: left;
+        }
+
+        .col-xs-1-7,
+        .col-sm-1-7,
+        .col-md-1-7,
+        .col-lg-1-7 {
+            min-height: 1px;
+            padding-left: 10px;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        @@media ( min-width: 768px) {
+            .col-sm-1-7 {
+                width: 14.286%;
+                float: left;
+            }
+        }
+
+        @@media ( min-width: 992px) {
+            .col-md-1-7 {
+                width: 14.286%;
+                float: left;
+            }
+        }
+
+        @@media ( min-width: 1200px) {
+            .col-lg-1-7 {
+                width: 14.286%;
+                float: left;
+            }
+        }
+
+        A:link {
+            COLOR: #000000;
+            TEXT-DECORATION: none;
+        }
+
+        a:visited {
+            COLOR: #000000;
+            TEXT-DECORATION: none;
+        }
+
+        .footer {
+            height: 46px;
+            /*//padding-top: 5px;*/
+            border: 0;
+        }
+    </style>
+</head>
+
+<body class="pace-done">
+    <div class="gray-bg top-navigation pace-done top-header" style="margin-left: auto;margin-right: auto;">
+        <div style="height: 113px;background-image: url(/images/bg2.gif);"></div>
+        <div id="wrapper" class="wrapper wrapper-content animated fadeInRight gray-bg" style="padding: 0px 0px;">
+            <div id="page-wrapper" class="gray-bg">
+                <div class="row border-bottom white-bg">
+                    <nav class="navbar navbar-static-top" role="navigation" style="background: #f3f3f4;">
+                        <div class="navbar-collapse collapse" id="navbar" style="position: relative">
+                            <ul class="nav navbar-nav row" id='topNav'>
+                                <li id="li" v-bind:class="{active:isActive}" class="dropdown col-md-1-7 col-sm-1-7 col-xs-1-7">
+                                    <a aria-expanded="false" role="button" href="/home/index" class="dropdown-toggle" style="cursor:pointer">返回首页</a>
+                                </li>
+                                <li id="li2" v-bind:class="{active:isActive}" class="dropdown col-md-1-7 col-sm-1-7 col-xs-1-7">
+                                    <a aria-expanded="false" role="button" href="/dossier/index" class="dropdown-toggle" style="cursor:pointer"> 朱琳档案</a>
+                                </li>
+                                <li id="li3" v-bind:class="{active:isActive}" class="dropdown col-md-1-7 col-sm-1-7 col-xs-1-7">
+                                    <a aria-expanded="false" role="button" href="/creation/index" class="dropdown-toggle" style="cursor:pointer"> 创作年表 </a>
+                                </li>
+                                <li id="li4" v-bind:class="{active:isActive}" class="dropdown col-md-1-7 col-sm-1-7 col-xs-1-7">
+                                    <a aria-expanded="false" role="button" href="/video/index" class="dropdown-toggle" style="cursor:pointer"> 朱琳视频 </a>
+                                </li>
+                                <li id="li5" v-bind:class="{active:isActive}" class="dropdown col-md-1-7 col-sm-1-7 col-xs-1-7">
+                                    <a aria-expanded="false" role="button" href="/album/index" class="dropdown-toggle" style="cursor:pointer"> 朱琳相册 </a>
+                                </li>
+                                <li id="li6" v-bind:class="{active:isActive}" class="dropdown col-md-1-7 col-sm-1-7 col-xs-1-7">
+                                    <a aria-expanded="false" role="button" href="/wallpaper/index" class="dropdown-toggle" style="cursor:pointer"> 琳迷原创 </a>
+                                </li>
+                                <li id="li7" v-bind:class="{active:isActive}" class="dropdown col-md-1-7 col-sm-1-7 col-xs-1-7">
+                                    <a aria-expanded="false" role="button" href="/about/index" class="dropdown-toggle" style="cursor:pointer"> 关于我们 </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="case">
+        <div class="container" style="padding: 0;width: 100%;height: 100%;">
+            <div class="row" style="height: 100%;">
+                <div class="col-xs-4 col-sm-4  col-md-4  col-lg-3" style="padding: 0;height: 100%;">
+                    @await Html.PartialAsync("~/Views/Left/Index.cshtml")
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-9 " style="padding:0 0 0 10px;height: 100%;">
+                    <div class="panel panel-default" style="height:100%;">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div style="text-align:center;margin-top:5px;">
+            CopyRight © 2017 all right Reserved <a href="http://www.zhulin.net" style="font-family:'Verdana';font-size:1px"><strong> Zhulin</strong><span style="color:red"><strong> .net</strong></span></a><font size="1"> Design by </font><font face="宋体" size="2"><a href="http://www.zhulin.net"><strong> 朱琳影迷会</strong> </a></font>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#li',
+            computed: {
+                isActive() {
+                    return '@ViewBag.ActiveTab' == 'home';
+                }
+            }
+        });
+        new Vue({
+            el: '#li2',
+            computed: {
+                isActive() {
+                    return '@ViewBag.ActiveTab' == 'dossier';
+                }
+            }
+        });
+        new Vue({
+            el: '#li3',
+            computed: {
+                isActive() {
+                    return '@ViewBag.ActiveTab' == 'creation';
+                }
+            }
+        });
+        new Vue({
+            el: '#li4',
+            computed: {
+                isActive() {
+                    return '@ViewBag.ActiveTab' == 'video';
+                }
+            }
+        });
+        new Vue({
+            el: '#li5',
+            computed: {
+                isActive() {
+                    return '@ViewBag.ActiveTab' == 'album';
+                }
+            }
+        });
+        new Vue({
+            el: '#li6',
+            computed: {
+                isActive() {
+                    return '@ViewBag.ActiveTab' == 'wallpaper';
+                }
+            }
+        });
+        new Vue({
+            el: '#li7',
+            computed: {
+                isActive() {
+                    return '@ViewBag.ActiveTab' == 'aboutus';
+                }
+            }
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

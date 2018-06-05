@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  star.zhulin.web.portal:
+    image: ${DOCKER_REGISTRY}starzhulinwebportal
+    build:
+      context: .
+      dockerfile: src\Star.Zhulin.Web.Portal\Dockerfile
