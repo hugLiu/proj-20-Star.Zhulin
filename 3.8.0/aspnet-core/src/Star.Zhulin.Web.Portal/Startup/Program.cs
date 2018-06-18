@@ -13,6 +13,8 @@ namespace Star.Zhulin.Web.Startup
         public static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
+                .UseUrls("http://192.168.0.103:6001")
                 .UseStartup<Startup>()
                 .Build();
         }

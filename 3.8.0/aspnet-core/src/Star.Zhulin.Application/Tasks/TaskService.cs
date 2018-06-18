@@ -13,9 +13,9 @@ namespace Star.Zhulin.Tasks
             _taskRepository = taskRepository;
         }
 
-        public string GetTask(int id)
-        {
-            return _taskRepository.GetTask2(id);
-        }
+        //public string GetTask(int id)
+        //{
+        //    return _taskRepository.GetTask2(id);
+        //}
     }
 }

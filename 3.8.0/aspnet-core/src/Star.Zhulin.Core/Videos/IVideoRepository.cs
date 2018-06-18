@@ -7,7 +7,7 @@ namespace Star.Zhulin.Videos
 {
     public interface IVideoRepository : IRepository<Video, Guid>
     {
-        string GetTask2(int id);
+        //string GetTask2(int id);
 
        // IEnumerable<Video> GetVideoInfo(Video model);
     }

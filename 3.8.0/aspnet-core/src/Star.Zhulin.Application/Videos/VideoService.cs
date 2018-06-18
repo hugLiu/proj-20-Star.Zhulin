@@ -17,20 +17,15 @@ namespace Star.Zhulin.Videos
             _videoRepository = videoRepository;
         }
 
-        public string GetTask(int id)
-        {
-            return _videoRepository.GetTask2(id);
-        }
+        //public string GetTask(int id)
+        //{
+        //    return _videoRepository.GetTask2(id);
+        //}
 
         public IEnumerable<string> GetVideoInfo()
         {
             return null;
-        }
-
-        public string GetVideo()
-        {
-            return _videoRepository.GetTask2(3);
-        }
+        } 
 
         public async Task<ListResultDto<VideoDto>> GetVideoInfo(VideoInput input)
         {
