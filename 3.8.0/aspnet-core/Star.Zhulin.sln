@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Star.Zhulin.EntityFramework
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Star.Zhulin.Web.Portal", "src\Star.Zhulin.Web.Portal\Star.Zhulin.Web.Portal.csproj", "{13A71102-EDCD-4CA9-B6A6-ADB14A705926}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Star.Zhulin.Portal", "src\Star.Zhulin.Portal\Star.Zhulin.Portal.csproj", "{518092CF-84D8-478A-9531-24E9F61C17A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{13A71102-EDCD-4CA9-B6A6-ADB14A705926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13A71102-EDCD-4CA9-B6A6-ADB14A705926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13A71102-EDCD-4CA9-B6A6-ADB14A705926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{518092CF-84D8-478A-9531-24E9F61C17A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{518092CF-84D8-478A-9531-24E9F61C17A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{518092CF-84D8-478A-9531-24E9F61C17A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{518092CF-84D8-478A-9531-24E9F61C17A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{A2213374-BB48-48FD-BBD4-81E6A961D866} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
 		{E0580562-F8F2-4EBB-B07A-ABFC6F2C314F} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
 		{13A71102-EDCD-4CA9-B6A6-ADB14A705926} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
+		{518092CF-84D8-478A-9531-24E9F61C17A7} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE27B46D-306C-4808-94D1-559BA4985E2A}
