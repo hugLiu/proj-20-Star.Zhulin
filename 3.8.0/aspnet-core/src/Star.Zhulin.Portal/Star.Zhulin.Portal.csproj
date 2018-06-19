@@ -2,11 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+<<<<<<< HEAD
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+=======
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+>>>>>>> cc96c4b8d466bcaa550dbdbe6bb2a31c6be72a50
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\AlbumEditController.cs" />
+    <Compile Remove="Controllers\AlbumManageController.cs" />
+    <Compile Remove="Controllers\VideoEditController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
