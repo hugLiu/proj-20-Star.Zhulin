@@ -7,6 +7,6 @@ namespace Star.Zhulin.Tasks
 {
     public interface ITaskRepository : IRepository<Task>
     {
-        string GetTask2(int id);
+        //string GetTask2(int id);
     }
 }

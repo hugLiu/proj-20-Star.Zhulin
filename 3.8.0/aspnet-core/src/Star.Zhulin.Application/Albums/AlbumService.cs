@@ -18,20 +18,15 @@ namespace Star.Zhulin.Albums
             _albumRepository = albumRepository;
         }
 
-        public string GetTask(int id)
-        {
-            return _albumRepository.GetTask2(id);
-        }
-
         public IEnumerable<string> GetAlbumInfo()
         {
             return null;
         }
 
-        public string GetAlbum()
-        {
-            return _albumRepository.GetTask2(3);
-        }
+        //public string GetAlbum()
+        //{
+        //    return _albumRepository.GetTask2(3);
+        //}
 
         public async Task<ListResultDto<AlbumDto>> GetAlbumInfo(AlbumInput input)
         {

@@ -12,13 +12,13 @@ namespace Star.Zhulin.EntityFrameworkCore.Repositories
         public TaskRepository(IDbContextProvider<ZhulinDbContext> dbContextProvider) : base(dbContextProvider)
         { }
 
-        public string GetTask2(int id)
-        {
-            var query = GetAll();
-            query = query.Where(t => t.Id == id);
-            var lists = query.ToList();
+        //public string GetTask2(int id)
+        //{
+        //    var query = GetAll();
+        //    query = query.Where(t => t.Id == id);
+        //    var lists = query.ToList();
              
-            return lists[0].Title;
-        } 
+        //    return lists[0].Title;
+        //} 
     }
 }

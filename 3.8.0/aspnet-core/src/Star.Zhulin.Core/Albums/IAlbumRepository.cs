@@ -7,6 +7,6 @@ namespace Star.Zhulin.Albums
 { 
     public interface IAlbumRepository : IRepository<Album, Guid>
     {
-        string GetTask2(int id);
+       // string GetTask2(int id);
     }
 }

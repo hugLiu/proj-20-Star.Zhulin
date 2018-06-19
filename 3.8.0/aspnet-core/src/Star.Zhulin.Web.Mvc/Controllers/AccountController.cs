@@ -83,7 +83,7 @@ namespace Star.Zhulin.Web.Controllers
 
         public ActionResult Login(string userNameOrEmailAddress = "", string returnUrl = "", string successMessage = "")
         {
-            var a = _taskService.GetTask(3);
+            //var a = _taskService.GetTask(3);
 
             if (string.IsNullOrWhiteSpace(returnUrl))
             {

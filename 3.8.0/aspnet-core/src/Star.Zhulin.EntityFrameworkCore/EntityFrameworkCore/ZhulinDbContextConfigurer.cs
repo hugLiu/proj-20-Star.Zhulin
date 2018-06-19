@@ -7,12 +7,14 @@ namespace Star.Zhulin.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<ZhulinDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            //builder.UseSqlServer(connectionString);
+            builder.UseMySql(connectionString);
         }
 
         public static void Configure(DbContextOptionsBuilder<ZhulinDbContext> builder, DbConnection connection)
         {
-            builder.UseSqlServer(connection);
+            //builder.UseSqlServer(connection);
+            builder.UseMySql(connection);
         }
     }
 }

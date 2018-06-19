@@ -6,6 +6,6 @@ namespace Star.Zhulin.Tasks
 {
     public interface ITaskService
     {
-        string GetTask(int id);
+        //string GetTask(int id);
     }
 }

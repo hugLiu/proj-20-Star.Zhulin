@@ -9,7 +9,7 @@ namespace Star.Zhulin.Albums
 {
     public interface IAlbumService
     { 
-        string GetAlbum();
+        //string GetAlbum();
 
         /// <summary>获取相册信息</summary>
         Task<ListResultDto<AlbumDto>> GetAlbumInfo(AlbumInput input);
