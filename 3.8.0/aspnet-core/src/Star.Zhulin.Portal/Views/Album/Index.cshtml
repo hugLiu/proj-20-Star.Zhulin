@@ -1,0 +1,217 @@
+﻿@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+<!--colorbox-->
+<link href="/css/plugins/colorbox/colorbox.css" rel="stylesheet" />
+<!--ace-->
+<link href="/css/plugins/ace/ace.min.css" rel="stylesheet" />
+
+<style>
+    a {
+        color: #000000;
+    }
+
+    .top-navigation .nav > li > a {
+        color: #676a6c;
+    }
+
+    .top-navigation .nav > li a:hover {
+        color: #1ab394;
+    }
+
+    .icon-title, .site-title {
+        color: #699f00;
+        float: left;
+        padding-right: 7px;
+        height: 20px;
+        white-space: nowrap;
+    }
+
+    .tit-bgLine {
+        border-bottom: 2px solid #8ac024;
+        margin-bottom: 25px;
+    }
+
+    .album-content {
+        width: 140px;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    .content-background {
+        background: url('/images/star/albumclip.gif') repeat-x;
+        width: 150px;
+        height: 140px;
+        float: left;
+        margin-right: 20px;
+        text-align: center;
+    }
+
+    .box-a {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .text-overflow {
+        padding: 0 5px;
+        overflow: hidden; /*内容超出宽度时隐藏超出部分的内容 */
+        text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+        white-space: nowrap; /*不换行 */
+    }
+</style>
+
+<div class="panel-heading">朱琳相册</div>
+<div class="panel-body" style="min-height: 50%;height: 90%;overflow: auto;">
+    <div class="container-fluid">
+        <!-- ko foreach:resultAlbum  -->
+        <div>
+            <div class="album-content">
+                <div class="cbp-caption">
+                    <div class="cbp-caption-defaultWrap content-background" data-bind="click: function(data,event){return $parent.openAlbum(data);} ">
+                        <a class="cbp-lightbox box-a" data-bind="attr:{title:name}">
+                            <img data-bind="attr:{src:url?url.replace(/\\\\/g,'/'):''}" width="120" height="77" border="0" style="margin-left:5px;margin-bottom:4px;" />
+                        </a>
+                        <a class="cbp-lightbox" style="display:block">
+                            <div class="cbp-l-grid-projects-title uppercase text-center tooltips text-overflow" data-bind="text:name,attr:{title:name}"></div>
+                            <div class="cbp-l-grid-projects-title uppercase text-center tooltips text-overflow">共<span data-bind="text:total"></span>张</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+<div class="main-container" id="main-container">
+    <div class="album-inner" style="display:none;">
+        <div class="main-content">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row-fluid" id="album-content">
+                            <ul class="ace-thumbnails">
+                                <li>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--linq-->
+<script src="/js/plugins/linq.js_ver2.2.0.2/linq.min.js"></script>
+<!--colorbox-->
+<script src="/js/plugins/colorbox/jquery.colorbox-min.js"></script>
+<!--ace-->
+<script src="/js/plugins/ace/ace.min.js"></script>
+
+<script>
+    var vm = null, colorbox_params = null, gAblumId = "";
+    var ViewModel = function () {
+        var self = this;
+        self.resultAlbum = ko.observableArray([]);
+        self.openAlbum = function (data) {
+            if (data) {
+                createAlbum(data.id);
+            }
+        }
+    }
+    $(document).ready(function () {
+        //document.onmousewheel = function() {return false;}//屏蔽鼠标滚轮
+        document.onselectstart = function () { return false; }//禁止选取、防止复制
+        document.oncopy = function () { return false; }//禁止复制和剪切
+        document.onpaste = function () { return false; }//禁止粘贴
+
+        vm = new ViewModel();
+        ko.applyBindings(vm);
+        getAlbumInfo();
+        initParameter();
+    });
+
+    var initParameter = function () {
+        colorbox_params = {
+            reposition: true,
+            scalePhotos: true,
+            scrolling: false,
+            previous: '<i class="icon-arrow-left"></i>',
+            next: '<i class="icon-arrow-right"></i>',
+            close: '&times;',
+            current: '{current} of {total}',
+            maxWidth: '100%',
+            maxHeight: '100%',
+            onOpen: function () {
+                document.body.style.overflow = 'hidden';
+            },
+            onClosed: function () {
+                //document.body.style.overflow = 'auto';
+            },
+            onComplete: function () {
+                $.colorbox.resize();
+            }
+        };
+        $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+    }
+
+    var getAlbumInfo = function () {
+        vm.resultAlbum([]);
+        $.ajax({
+            url: "/AlbumManage/GetAlbumFolder",
+            type: "post",
+            success: function (result) {
+                if (result) {
+                    vm.resultAlbum(result.result);
+                }
+            }
+        });
+    }
+
+    var createAlbum = function (id) {
+        if (gAblumId != id) {
+            gAblumId = id;
+            var parent = $("#album-content")[0], node = $(".ace-thumbnails")[0];
+            parent.removeChild(node);
+            createNewNode(id);
+        }
+        else {
+            initColorboxEvent();
+        }
+    }
+
+    var createNewNode = function (id) {
+        $.ajax({
+            url: "/AlbumManage/GetAlbumInfoByPId",
+            type: "post",
+            data: { pid: encodeURIComponent(id) },
+            success: function (result) {
+                result = result.result;
+                if (result) {
+                    var temp = '<ul class="ace-thumbnails">';
+                    for (var i = 0; i < result.length; i++) {
+                        var url = result[i].url.replace(/\\\\/g, '/');
+                        temp += '<li>';
+                        temp += '<a href="' + url + '" data-rel="colorbox">';
+                        temp += '<img alt="1500x1500" src=' + url + '>';
+                        temp += '</a>';
+                        temp += '</li>';
+                    }
+                    temp += "</ul>";
+                    $("#album-content").append(temp);
+                    initColorboxEvent();
+                }
+            }
+        });
+    }
+
+    var initColorboxEvent = function () {
+        $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+        $(".ace-thumbnails li:first a").click();
+    }
+</script>
